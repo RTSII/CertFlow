@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Vaporwave Light Mode (Soft Synthwave) */
+    --background: 240 15% 95%;
+    --foreground: 260 30% 20%;
+    --card: 240 20% 98%;
+    --card-foreground: 260 30% 20%;
+    --popover: 240 20% 98%;
+    --popover-foreground: 260 30% 20%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 260 30% 10%;
+    --secondary: 300 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 15% 90%;
+    --muted-foreground: 260 20% 50%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 260 30% 85%;
+    --input: 260 30% 85%;
+    --ring: 180 100% 50%;
+    --radius: 0.75rem;
+
+    /* Chart colors */
+    --chart-1: 180 100% 50%;
+    --chart-2: 300 100% 50%;
+    --chart-3: 280 80% 60%;
+    --chart-4: 160 100% 50%;
+    --chart-5: 320 100% 60%;
+
+    /* Sidebar */
+    --sidebar: 240 20% 96%;
+    --sidebar-foreground: 260 30% 20%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 260 30% 10%;
+    --sidebar-accent: 280 80% 95%;
+    --sidebar-accent-foreground: 280 80% 40%;
+    --sidebar-border: 260 30% 88%;
+    --sidebar-ring: 180 100% 50%;
+  }
+
+  .dark {
+    /* Vaporwave Dark Mode (Cyberpunk Neon) */
+    --background: 240 20% 8%;
+    --foreground: 0 0% 100%;
+    --card: 240 25% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 25% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 240 20% 8%;
+    --secondary: 300 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 20% 18%;
+    --muted-foreground: 240 10% 65%;
+    --accent: 280 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+    --ring: 180 100% 50%;
+
+    /* Chart colors - Neon */
+    --chart-1: 180 100% 50%;
+    --chart-2: 300 100% 50%;
+    --chart-3: 280 80% 60%;
+    --chart-4: 160 100% 50%;
+    --chart-5: 320 100% 60%;
+
+    /* Sidebar - Deep void with neon accents */
+    --sidebar: 240 25% 6%;
+    --sidebar-foreground: 240 20% 95%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 240 20% 8%;
+    --sidebar-accent: 280 60% 20%;
+    --sidebar-accent-foreground: 280 80% 70%;
+    --sidebar-border: 240 20% 15%;
+    --sidebar-ring: 180 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+
+  /* Neon Glow Effects */
+  .neon-glow-cyan {
+    box-shadow:
+      0 0 5px hsl(180 100% 50% / 0.5),
+      0 0 20px hsl(180 100% 50% / 0.3),
+      0 0 40px hsl(180 100% 50% / 0.1);
+  }
+
+  .neon-glow-pink {
+    box-shadow:
+      0 0 5px hsl(300 100% 50% / 0.5),
+      0 0 20px hsl(300 100% 50% / 0.3),
+      0 0 40px hsl(300 100% 50% / 0.1);
+  }
+
+  .neon-glow-purple {
+    box-shadow:
+      0 0 5px hsl(280 80% 60% / 0.5),
+      0 0 20px hsl(280 80% 60% / 0.3),
+      0 0 40px hsl(280 80% 60% / 0.1);
+  }
+
+  .neon-text-cyan {
+    text-shadow:
+      0 0 5px hsl(180 100% 50% / 0.8),
+      0 0 10px hsl(180 100% 50% / 0.5),
+      0 0 20px hsl(180 100% 50% / 0.3);
+  }
+
+  .neon-text-pink {
+    text-shadow:
+      0 0 5px hsl(300 100% 50% / 0.8),
+      0 0 10px hsl(300 100% 50% / 0.5),
+      0 0 20px hsl(300 100% 50% / 0.3);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+
+  /* Cyber Grid Pattern */
+  .cyber-grid {
+    background-image:
+      linear-gradient(hsl(180 100% 50% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(180 100% 50% / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Gradient Backgrounds */
+  .gradient-vaporwave {
+    background: linear-gradient(135deg,
+        hsl(280 80% 20%) 0%,
+        hsl(240 25% 12%) 50%,
+        hsl(200 60% 15%) 100%);
+  }
+
+  .gradient-neon-border {
+    background: linear-gradient(135deg,
+        hsl(180 100% 50%) 0%,
+        hsl(300 100% 50%) 50%,
+        hsl(280 80% 60%) 100%);
+  }
+
+  /* Holographic Shimmer */
+  .holographic {
+    background: linear-gradient(135deg,
+        hsl(180 100% 50% / 0.1) 0%,
+        hsl(300 100% 50% / 0.1) 25%,
+        hsl(280 80% 60% / 0.1) 50%,
+        hsl(180 100% 50% / 0.1) 75%,
+        hsl(300 100% 50% / 0.1) 100%);
+    background-size: 200% 200%;
+    animation: holographic-shimmer 8s ease-in-out infinite;
+  }
+
+  @keyframes holographic-shimmer {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Pulse Animation */
+  .pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-neon {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.7;
+    }
+  }
+}
