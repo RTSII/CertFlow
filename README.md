@@ -2,6 +2,8 @@
 
 > **A comprehensive, self-paced online 1:1 study course for the NHA Certified Electronic Health Records Specialist (CEHRS) certification exam.**
 
+**GitHub Repository:** [https://github.com/RTSII/CertFlow](https://github.com/RTSII/CertFlow)
+
 ---
 
 ## 🎯 Project Purpose
