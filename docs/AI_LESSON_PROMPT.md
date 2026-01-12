@@ -1,22 +1,16 @@
-# AI Lesson Content Generation Prompt
-
-**Use this prompt when starting a new AI session to create lesson content for CheckFlow.**
-
----
-
 ## 🧠 Model Strategy Guide
 
 For the best results when creating course content, follow this two-step "Research then Generate" workflow:
 
 ### Step 1: Fact-Finding (Raw Data)
-**Recommended Model:** `Gemini 2.0 Deep Research`
+**Recommended Model:** `Gemini 2.0 Deep Research` or `GPT-4o (with Search)`
 - **Goal:** Gather all factual info, HIPAA regs, coding standards, and real-world healthcare examples for the specific section.
 - **Instruct the model:** "Perform a deep research of all CEHRS exam topics for [Module/Section Name]. Find factual definitions, public domain regulations, and common EHR workflows. Save the output as raw notes."
 
 ### Step 2: Content Generation (The Prompt)
-**Recommended Model:** `Gemini 2.0 Flash Thinking` or `Gemini 1.5 Pro (Thinking)`
+**Recommended Model:** `Gemini 2.0 Flash Thinking`, `Claude 3.5 Sonnet`, or `GPT-o1-preview`
 - **Goal:** Transform raw research into formatted TypeScript files using the prompt below.
-- **Why?** "Thinking" mode is critical for strictly following the "No External Links" rule and generating complex ASCII diagrams/tables accurately.
+- **⚠️ WARNING AGAINST OUTLINES:** These models often try to be "helpful" by providing an outline first. Do NOT accept an outline. Tell the model: **"I DO NOT want an outline. I need the FULL, final, publication-ready content for every lesson in this section in one single mission."**
 
 ---
 
