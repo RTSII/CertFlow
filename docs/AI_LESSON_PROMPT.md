@@ -13,6 +13,7 @@ You are helping develop lesson content for **CheckFlow**, a CEHRS (Certified Ele
 ## Project Context
 
 CheckFlow is a Next.js web app with:
+- **Local Path:** `c:\Users\rtsii\.gemini\antigravity\playground\cobalt-lagoon`
 - **6 modules** covering all NHA CEHRS exam domains
 - **159 total lessons** across 35 sections
 - **Vaporwave/cyberpunk aesthetic** with dark mode
