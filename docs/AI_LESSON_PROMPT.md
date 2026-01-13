@@ -376,3 +376,86 @@ Before submitting your output, verify:
 - Section 6.3: lesson-6-3-1 through lesson-6-3-4
 - Section 6.4: lesson-6-4-1 through lesson-6-4-5
 - Section 6.5: lesson-6-5-1 through lesson-6-5-3
+
+---
+
+## Database Seeding Instructions
+
+**CRITICAL:** After creating the TypeScript lesson file, you MUST seed the content into the Supabase database.
+
+### Seeding Procedure
+
+1. **Create the Direct JavaScript Seed Script**
+   
+   **File:** `src/lib/supabase/seed_section_X_Y_direct.js`
+
+   Use this template (replace X_Y with your section number):
+
+\`\`\`javascript
+require('dotenv').config({ path: '.env.local' })
+const { createClient } = require('@supabase/supabase-js')
+const fs = require('fs')
+const path = require('path')
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+if (!supabaseUrl || !supabaseServiceKey) {
+    console.error('❌ Missing Supabase credentials')
+    process.exit(1)
+}
+
+const supabase = createClient(supabaseUrl, supabaseServiceKey)
+
+const lessonFilePath = path.join(__dirname, '../../content/lessons/section-X-Y-name.ts')
+const lessonFileContent = fs.readFileSync(lessonFilePath, 'utf8')
+
+function extractLessonContent(fileContent, lessonId) {
+    const lessonRegex = new RegExp(\`'\${lessonId}':\\\\s*{[^}]+title:\\\\s*'([^']+)',\\\\s*contentType:\\\\s*'[^']+',\\\\s*estimatedMinutes:\\\\s*(\\\\d+),\\\\s*content:\\\\s*\\\\\`([\\\\s\\\\S]*?)\\\\\`\\\\s*}\`, 'm')
+    const match = fileContent.match(lessonRegex)
+    if (match) {
+        return { title: match[1], estimatedMinutes: parseInt(match[2]), content: match[3] }
+    }
+    return null
+}
+
+async function seedSection() {
+    console.log('🌱 Seeding Section X.Y...\\n')
+    const lessons = [
+        { id: 'lesson-x-y-1', title: 'Exact Title from modules.ts' }
+        // Add all lessons
+    ]
+    for (const lesson of lessons) {
+        const lessonData = extractLessonContent(lessonFileContent, lesson.id)
+        if (!lessonData) { console.log(\`⚠️  Could not extract: \${lesson.id}\`); continue }
+        const { data: dbLesson } = await supabase.from('lessons').select('id').eq('title', lesson.title).single()
+        if (!dbLesson) { console.log(\`⚠️  Not in DB: \${lesson.title}\`); continue }
+        const { error } = await supabase.from('lessons').update({ content: lessonData.content, estimated_minutes: lessonData.estimatedMinutes }).eq('id', dbLesson.id)
+        if (error) { console.error(\`❌ \${lesson.title}\`, error.message) } 
+        else { console.log(\`✅ \${lesson.title} (\${lessonData.estimatedMinutes}min)\`) }
+    }
+    console.log('\\n✨ Seeding complete!')
+}
+seedSection().catch(console.error)
+\`\`\`
+
+2. **Run the Seed Script**
+
+\`\`\`bash
+node src/lib/supabase/seed_section_X_Y_direct.js
+\`\`\`
+
+3. **Verify Success**
+
+You should see ✅ for each lesson. If any fail, check that:
+- Lesson titles EXACTLY match those in `src/content/modules.ts`
+- The TypeScript file format is correct
+- Supabase credentials are in `.env.local`
+
+**DO NOT use `npx tsx` or `npx ts-node` - they fail with complex template literals.**
+
+For complete details, see `docs/SEEDING_PROCEDURE.md`
+
+---
+
+## END OF PROMPT
