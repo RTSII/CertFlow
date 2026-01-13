@@ -6,12 +6,12 @@
  */
 
 export const SECTION_1_1_LESSONS = {
-    // Lesson 1.1.1: What are Electronic Health Records?
-    'lesson-1-1-1': {
-        title: 'What are Electronic Health Records?',
-        contentType: 'lesson',
-        estimatedMinutes: 15,
-        content: `
+  // Lesson 1.1.1: What are Electronic Health Records?
+  'lesson-1-1-1': {
+    title: 'What are Electronic Health Records?',
+    contentType: 'lesson',
+    estimatedMinutes: 15,
+    content: `
 ## 🎯 Learning Objective
 
 By the end of this lesson, you will be able to articulate the critical distinctions between Electronic Medical Records (EMR), Electronic Health Records (EHR), and Personal Health Records (PHR), analyze the historical evolution of digital records from paper-based systems, and evaluate the impact of the HITECH Act on modern healthcare compliance and reimbursement.
@@ -37,6 +37,25 @@ The landscape changed dramatically with the passage of the **Health Information 
 The HITECH Act did not just ask providers to buy computers; it incentivized the **Meaningful Use** of that technology. It established a program (now called **Promoting Interoperability**) that offered substantial financial payments to eligible professionals and hospitals who adopted certified EHR technology (CEHRT) and demonstrated that they were using it to improve care quality.
 
 > **Key Insight:** The HITECH Act shifted EHR adoption from "optional" to "essential." It utilized a "carrot and stick" approach: initially offering bonuses (the carrot) for adoption, which eventually turned into penalties (the stick) in the form of reduced Medicare reimbursements for those who failed to adopt the technology.
+
+### ONC Certification: What Makes an EHR "Certified"?
+
+Not all EHR systems qualify for federal incentive programs. The **Office of the National Coordinator for Health Information Technology (ONC)** is the federal agency responsible for setting technical standards and certifying EHR systems.
+
+**Certified EHR Technology (CEHRT)** must demonstrate specific capabilities:
+
+* **Security Safeguards:** Encryption of data at rest and in transit, access controls, audit logs
+* **Interoperability:** Ability to send and receive C-CDA documents, support for FHIR APIs
+* **Clinical Decision Support:** Drug-allergy and drug-drug interaction checking
+* **Patient Engagement:** Patient portal with view, download, and transmit (VDT) capabilities
+* **Quality Reporting:** Ability to calculate and submit quality measures electronically
+
+> **Exam Tip:** Before claiming Promoting Interoperability measures for Medicare/Medicaid reimbursement, always verify your EHR has current ONC certification. Using a non-certified system disqualifies incentive payments.
+
+**Why Certification Matters:**
+* **Compliance:** Required for federal programs (MIPS, APMs)
+* **Safety:** Ensures basic clinical decision support is functional
+* **Interoperability:** Guarantees the system can exchange data with other certified systems
 
 ---
 
@@ -132,6 +151,8 @@ Status: Interoperability success.
 | **EHR (Electronic Health Record)** | An electronic record of health-related information that conforms to nationally recognized interoperability standards and can be created, managed, and consulted by authorized clinicians across *more than one* healthcare organization. |
 | **EMR (Electronic Medical Record)** | An electronic record of health-related information that can be created, gathered, managed, and consulted by authorized clinicians within *one single* healthcare organization. |
 | **HITECH Act** | The Health Information Technology for Economic and Clinical Health Act (2009). It provided financial incentives for the meaningful use of certified EHR technology to improve care quality. |
+| **ONC (Office of the National Coordinator)** | The federal agency responsible for setting technical standards and certifying EHR systems to ensure they meet requirements for safety, security, and interoperability. |
+| **CEHRT (Certified EHR Technology)** | An EHR system that has been tested and certified by ONC to meet specific functional, security, and interoperability requirements. Required for federal incentive programs. |
 | **Interoperability** | The ability of different information systems and software applications to communicate, exchange data, and use the information that has been exchanged. |
 | **Meaningful Use / Promoting Interoperability** | A CMS program that incentivizes the use of certified EHR technology by providers to improve patient care. It requires reporting on specific objectives like e-prescribing and health information exchange. |
 
@@ -155,14 +176,14 @@ Status: Interoperability success.
 
 *Next Lesson: EHR Benefits & Core Functions →*
 `
-    },
+  },
 
-    // Lesson 1.1.2: EHR Benefits & Core Functions
-    'lesson-1-1-2': {
-        title: 'EHR Benefits & Core Functions',
-        contentType: 'lesson',
-        estimatedMinutes: 12,
-        content: `
+  // Lesson 1.1.2: EHR Benefits & Core Functions
+  'lesson-1-1-2': {
+    title: 'EHR Benefits & Core Functions',
+    contentType: 'lesson',
+    estimatedMinutes: 12,
+    content: `
 ## 🎯 Learning Objective
 
 By the end of this lesson, you will be able to identify and analyze the 8 Core Functions of an EHR as defined by the Institute of Medicine (IOM), and explain the specific clinical, administrative, and financial benefits of EHR implementation in a modern healthcare setting.
@@ -312,14 +333,14 @@ Step 7: Order sent electronically to Pharmacy (Connectivity)
 
 *Next Lesson: EHR Data Content & Structure →*
 `
-    },
+  },
 
-    // Lesson 1.1.3: EHR Data Content & Structure
-    'lesson-1-1-3': {
-        title: 'EHR Data Content & Structure',
-        contentType: 'lesson',
-        estimatedMinutes: 18,
-        content: `
+  // Lesson 1.1.3: EHR Data Content & Structure
+  'lesson-1-1-3': {
+    title: 'EHR Data Content & Structure',
+    contentType: 'lesson',
+    estimatedMinutes: 18,
+    content: `
 ## 🎯 Learning Objective
 
 By the end of this lesson, you will be able to distinguish between structured and unstructured data, explain the implications of each for reporting and decision support, and analyze the legal distinctions between the Legal Health Record (LHR) and the Designated Record Set (DRS) within an EHR environment.
@@ -369,6 +390,28 @@ Unstructured data is "free text" or narrative information. It describes the pati
 | **Reporting** | Excellent for registries/quality reports | Poor/Impossible for standard reports |
 | **Detail** | Limited (Specific values only) | Rich (Provides context and story) |
 | **Decision Support** | **Triggers Alerts** | **Does NOT Trigger Alerts** |
+
+### Data Integrity: The Foundation of Clinical Safety
+
+Beyond understanding structured vs. unstructured data, a CEHRS must ensure **data integrity**—the accuracy, completeness, and reliability of data throughout its entire lifecycle.
+
+**The Four Pillars of Data Integrity:**
+
+| Pillar | Definition | Example | CEHRS Responsibility |
+|--------|------------|---------|----------------------|
+| **Accuracy** | Data correctly represents reality | DOB entered as 01/15/1980 vs. 01/15/1890 (typo) | Double-check all manual entries |
+| **Completeness** | All required data is present | Allergy field shows "NKDA" vs. left blank | Prompt providers to complete missing fields |
+| **Timeliness** | Data is entered promptly | Vitals entered during visit vs. 3 days later | Document in real-time when possible |
+| **Consistency** | Same data matches across sources | "Metformin" spelled identically in all entries | Use system's drug dictionary, not free text |
+
+**Why Data Integrity Matters:**
+
+* **Patient Safety:** CDS alerts (drug interactions, allergies) only work with accurate, structured data
+* **Quality Reporting:** Incomplete records cause practices to fail quality measures and lose incentive payments
+* **Legal Protection:** Timely, accurate documentation provides legal defensibility in malpractice cases
+* **Revenue Cycle:** Incomplete or inaccurate coding leads to claim denials
+
+> **CEHRS Role:** You are the frontline defender of data integrity. When you notice a blank allergy field, a misspelled medication, or delayed documentation, you must address it. "Garbage in, garbage out" is not just a saying—it's patient safety.
 
 ---
 
@@ -457,6 +500,7 @@ Patient Chart
 |:-----|:-----------|
 | **Structured Data** | Data that is organized into specific fields (schema) with defined purposes, such as drop-down menus or checkboxes, making it searchable, computable, and reportable. |
 | **Unstructured Data** | Data that does not have a predefined data model, such as free-text notes, scanned documents, or dictated audio, which provides context but is difficult for computers to process. |
+| **Data Integrity** | The accuracy, completeness, timeliness, and consistency of data throughout its lifecycle. Essential for patient safety, quality reporting, and legal defensibility. |
 | **Legal Health Record (LHR)** | The official business record of the healthcare organization used for legal purposes and testimony. It is the record released in response to a subpoena. |
 | **Designated Record Set (DRS)** | A group of records defined by HIPAA that includes the medical and billing records used to make decisions about individuals. Patients have the right to access and amend this set. |
 | **Audit Trail** | A record that traces a user's electronic footsteps, recording who accessed a record, when, and what action was taken. It is generally NOT part of the LHR or DRS. |
@@ -481,14 +525,14 @@ Patient Chart
 
 *Next Lesson: Health Information Exchange (HIE) Overview →*
 `
-    },
+  },
 
-    // Lesson 1.1.4: Health Information Exchange (HIE) Overview
-    'lesson-1-1-4': {
-        title: 'Health Information Exchange (HIE) Overview',
-        contentType: 'lesson',
-        estimatedMinutes: 15,
-        content: `
+  // Lesson 1.1.4: Health Information Exchange (HIE) Overview
+  'lesson-1-1-4': {
+    title: 'Health Information Exchange (HIE) Overview',
+    contentType: 'lesson',
+    estimatedMinutes: 15,
+    content: `
 ## 🎯 Learning Objective
 
 By the end of this lesson, you will be able to differentiate between the three primary forms of Health Information Exchange (Directed, Query-Based, and Consumer-Mediated), analyze the workflow for each, and explain the role of modern interoperability standards like HL7 and FHIR in facilitating these exchanges.
@@ -569,6 +613,69 @@ This is the older, reliable workhorse of healthcare data.
 | **Ease of Use** | Difficult, requires custom interface | Developer-friendly, like modern web apps |
 | **Primary Use** | Internal (Lab to EHR) | External (App to EHR, Cloud) |
 
+### C-CDA: The Document Standard
+
+When EHRs exchange structured documents (like during a referral or discharge), they typically use **C-CDA (Consolidated Clinical Document Architecture)** format.
+
+**C-CDA** is a standardized XML document format for sharing clinical summaries. Think of it as the "file format" for clinical information—like how a PDF works for documents.
+
+**Common C-CDA Document Types:**
+* **Continuity of Care Document (CCD)** - Comprehensive summary for care transitions
+* **Summary of Care** - Generated when you "send a referral" electronically
+* **Discharge Summary** - Sent when patient leaves hospital to next provider
+* **Referral Note** - Specialist-to-specialist communication
+
+When you click "Send Referral" in your EHR, the system automatically packages the relevant data (allergies, meds, problem list) into a C-CDA document and transmits it via Direct Exchange.
+
+### Information Blocking: The 21st Century Cures Act
+
+**Information blocking** is one of the most important exam topics related to interoperability. The **21st Century Cures Act (2016)** made it illegal for providers and EHR vendors to inappropriately restrict access to electronic health information.
+
+**What is Information Blocking?**
+
+Information blocking occurs when a healthcare provider or EHR vendor takes actions that **prevent, discourage, or interfere** with access to, exchange of, or use of electronic health information.
+
+**Examples of Information Blocking (Prohibited):**
+* Charging **excessive fees** for data access beyond reasonable costs
+* Deliberately **delaying responses** to patient data requests without cause
+* Using **technical barriers** to prevent interoperability (export functions that don't work)
+* **"Gag clauses"** in EHR vendor contracts that forbid sharing data with competitors
+* Refusing to send electronic records and insisting on fax/mail only
+
+**Permitted Exceptions (NOT Information Blocking):**
+* **Privacy Protection:** Patient specifically requests their data NOT be shared
+* **Security:** Blocking access to prevent unauthorized use or cyberattack
+* **Infeasibility:** Technical limitations genuinely prevent exchange (old legacy systems)
+* **Health IT Performance:** Temporary blocking to maintain system performance during upgrades
+
+**Penalties:** The ONC can impose **civil monetary penalties** (fines) for information blocking violations. Providers can lose federal incentive payments.
+
+> **Exam Tip:** If a question describes a hospital refusing electronic records without a legitimate privacy/security reason, think "information blocking violation."
+
+### TEFCA: The National HIE Framework
+
+**TEFCA (Trusted Exchange Framework and Common Agreement)** is a federal initiative to create a universal "on-ramp" for nationwide health information exchange.
+
+**The Problem TEFCA Solves:**
+
+Before TEFCA, providers had to join **multiple** separate HIE networks:
+* **Carequality** (national network)
+* **CommonWell** (vendor network)
+* **DirectTrust** (Direct messaging)
+* Regional networks (state-specific)
+
+This was expensive and complicated. It's like needing separate apps for every bank to check your account.
+
+**The TEFCA Solution:**
+
+TEFCA creates a single framework where joining **one** qualified network automatically connects you to **all** networks nationwide.
+
+Think of it as the "interstate highway system" for health data:
+* **Before:** Separate toll roads requiring multiple passes
+* **After:** One "EZ-Pass" connects to the entire highway system
+
+**Status:** As of 2024, TEFCA is being implemented. Major EHR vendors (Epic, Cerner/Oracle) are joining as Qualified Health Information Networks (QHINs).
+
 ---
 
 ## 🔧 Practical Application: HIE in Action
@@ -621,6 +728,9 @@ ER Provider receives:
 | **HIE (Health Information Exchange)** | The electronic mobilization of health care information electronically across organizations within a region, community, or hospital system. |
 | **Directed Exchange** | The ability to send and receive secure information electronically between care providers to support coordinated care (e.g., referrals). It is a "push" mechanism. |
 | **Query-Based Exchange** | The ability for providers to find and/or request information on a patient from other providers, often used for unplanned care or emergencies. It is a "pull" mechanism. |
+| **C-CDA (Consolidated Clinical Document Architecture)** | A standardized XML document format for sharing structured clinical summaries (referrals, discharge summaries) between different EHR systems. |
+| **Information Blocking** | Actions by providers or EHR vendors that inappropriately prevent, discourage, or interfere with access to or exchange of electronic health information. Prohibited by the 21st Century Cures Act. |
+| **TEFCA (Trusted Exchange Framework and Common Agreement)** | A federal initiative creating a universal "on-ramp" to nationwide HIE, allowing participation in one network to connect to all networks. |
 | **FHIR (Fast Healthcare Interoperability Resources)** | A modern standard for exchanging healthcare information electronically using web-based APIs (resources), designed to be easier to implement and more flexible than older HL7 standards. |
 | **Direct Address** | A secure, encrypted email-like address used in Directed Exchange to send PHI between trusted providers. It is distinct from regular email. |
 
@@ -648,8 +758,8 @@ ER Provider receives:
 }
 
 export const SECTION_1_1_LESSON_IDS = [
-    'lesson-1-1-1',
-    'lesson-1-1-2',
-    'lesson-1-1-3',
-    'lesson-1-1-4'
+  'lesson-1-1-1',
+  'lesson-1-1-2',
+  'lesson-1-1-3',
+  'lesson-1-1-4'
 ]
