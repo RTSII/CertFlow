@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { useToggleProgress } from '@/hooks/use-progress'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 interface LessonViewerProps {
     lesson: any
@@ -124,9 +125,15 @@ export function LessonViewer({
                     prose-ol:text-zinc-300
                     prose-blockquote:border-l-cyan-500 prose-blockquote:bg-cyan-500/10 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:text-cyan-200
                     prose-code:text-fuchsia-400 prose-code:bg-fuchsia-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+                    prose-table:border-collapse prose-table:w-full prose-table:my-6
+                    prose-thead:bg-cyan-500/10 prose-thead:border-b-2 prose-thead:border-cyan-500/30
+                    prose-th:text-left prose-th:py-3 prose-th:px-4 prose-th:font-semibold prose-th:text-cyan-300 prose-th:border-r prose-th:border-white/10 last:prose-th:border-r-0
+                    prose-td:py-3 prose-td:px-4 prose-td:border prose-td:border-white/10 prose-td:text-zinc-300
+                    prose-tr:border-b prose-tr:border-white/10 last:prose-tr:border-b-0
+                    prose-tbody:prose-tr:hover:bg-white/5 prose-tbody:prose-tr:transition-colors
                 ">
                     {lesson.content ? (
-                        <ReactMarkdown>{lesson.content}</ReactMarkdown>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{lesson.content}</ReactMarkdown>
                     ) : (
                         <div className="py-20 text-center space-y-4 border-2 border-dashed border-white/10 rounded-3xl bg-white/5">
                             <div className="p-3 w-fit mx-auto rounded-full bg-white/10 text-zinc-400">
