@@ -564,7 +564,7 @@ This is the older, reliable workhorse of healthcare data.
 | Feature | HL7 v2 | FHIR (Fast Healthcare Interoperability Resources) |
 |:--------|:-------|:--------------------------------------------------|
 | **Age** | Legacy (1980s/90s) | Modern (2010s+) |
-| **Format** | Pipe-delimited text (\`|\`) | JSON/XML (Web-friendly) |
+| **Format** | Pipe-delimited text (pipe symbol) | JSON/XML (Web-friendly) |
 | **Architecture** | Message-based (Push) | RESTful API (Pull/Request) |
 | **Ease of Use** | Difficult, requires custom interface | Developer-friendly, like modern web apps |
 | **Primary Use** | Internal (Lab to EHR) | External (App to EHR, Cloud) |
